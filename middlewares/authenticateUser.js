@@ -1,8 +1,7 @@
 const jwt = require("jsonwebtoken")
-const catchAsyncError = require("../helpers/catchAsyncError")
-const crudOperations = require("../helpers/crudOperations")
+// const crudOperations = require("..//crudOperations")
 const User = require("../models/users.model")
-
+const catchAyncErrors = require("../utils/catchAsyncErrors")
 async function authenticateUser(req,res,next){
         const token =  req.cookies?.token
 
@@ -18,4 +17,5 @@ async function authenticateUser(req,res,next){
         req.user = user
         next()
 }
-module.exports = catchAsyncError(authenticateUser)
+
+module.exports = catchAyncErrors(authenticateUser)
