@@ -26,7 +26,7 @@ export const updateRecipe=(data)=>{
 export const fetchRecipe=(id)=>async(dispatch)=>{
     try{
         dispatch(loadingRecipe())
-        const recipe = await( await fetch(`http://localhost:8080/api/v1/recipe/${id}`)).json()
+        const recipe = await( await fetch(`/api/v1/recipe/${id}`)).json()
         if(!recipe.success) return dispatch(errorRecipe(recipe.error))
 
         return dispatch(updateRecipe(recipe.data))

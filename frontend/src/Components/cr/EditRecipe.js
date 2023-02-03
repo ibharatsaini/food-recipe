@@ -23,7 +23,7 @@ function EditRecipe({ recipe,changeState,submitFile,isLoading,
     }
     const {recipeId} = useParams()
     useEffect(()=>{
-        fetch(`http://localhost:8080/api/v1/recipe/edit/${recipeId}`)
+        fetch(`/api/v1/recipe/edit/${recipeId}`)
             .then(res=>res.json())
             .then(data=>{
                 if(!data.success) return 
@@ -204,7 +204,7 @@ function EditRecipe({ recipe,changeState,submitFile,isLoading,
             
         </div>
         
-        <div className='saveRecipe' onClick={()=>{createRecipe(`http://localhost:8080/api/v1/recipe/update/${recipeId}`)}}>
+        <div className='saveRecipe' onClick={()=>{createRecipe(`/api/v1/recipe/update/${recipeId}`)}}>
                     Update Recipe
         </div>
     </div>

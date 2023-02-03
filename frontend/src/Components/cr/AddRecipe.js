@@ -113,7 +113,7 @@ function AddRecipe({ recipe,changeState,submitFile,isLoading,deleteFile,
             
         </div>
         
-        <div className='saveRecipe' onClick={()=>{createRecipe(`http://localhost:8080/api/v1/recipe/create`)}}>
+        <div className='saveRecipe' onClick={()=>{createRecipe(`/api/v1/recipe/create`)}}>
                     Save Recipe
         </div>
     </div>

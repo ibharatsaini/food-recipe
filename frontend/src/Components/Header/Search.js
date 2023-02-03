@@ -8,7 +8,7 @@ function Search() {
     const navigate  = useNavigate()
     function fetchResult(value){
         setSearch(value)
-        fetch(`http://localhost:8080/api/v1/dish/search?keyword=${value}`)
+        fetch(`/v1/dish/search?keyword=${value}`)
             .then(res=>res.json())
             .then(data=>{
                 if(data.success && data.data.length>0){

@@ -46,7 +46,7 @@ const errorUser = (data)=>{
 export const createUser = (data)=>async(dispatch)=>{
     dispatch(loadingUser())
     try{
-        const user = await(await fetch(`http://localhost:8080/api/v1/user/create`,{
+        const user = await(await fetch(`/api/v1/user/create`,{
             method:"POST",
             body:JSON.stringify(data),
             headers:{
@@ -68,7 +68,7 @@ export const createUser = (data)=>async(dispatch)=>{
 export const loginUser = (data)=>async(dispatch)=>{
     dispatch(loadingUser())
     console.log(data)
-    const user = await (await fetch(`http://localhost:8080/api/v1/user/login/`,{
+    const user = await (await fetch(`/api/v1/user/login/`,{
         method:"POST",
         body:JSON.stringify(data),
         headers:{
