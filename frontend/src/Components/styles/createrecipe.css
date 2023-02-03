@@ -1,0 +1,147 @@
+#createRecipe{
+    width: 80%;
+    padding: 100px 0px;
+    margin: auto;
+}
+.imageLoad{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    flex-direction: column;
+    background-color: rgba(0,0,0,0.2);
+    position: relative;
+}
+.imageLoad img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin:auto;
+}
+.imageLoad button{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    border:none;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.createImg{
+    width: 70%;
+    height: 300px;
+    background-color: white;
+}
+
+input{
+    outline: none;
+}
+.dishname{
+    width: 70%;
+    margin-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.dishname label{
+    width: 100%;
+}
+.dishname select{
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+.dishname input{
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    margin-top: 10px;
+    border: 1px solid rgba(0,0,0,0.2)
+}
+.row{
+    display: inline-block;
+    width: 40%;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+.dishname label{
+    font-size: 20px;
+    display: block; 
+}
+.dishname span{
+    padding: 2px 10px;
+    background-color: burlywood;
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: 100px;
+    height: 30px;
+    margin-top: auto    ;
+}
+
+/* 
+.dishname .ingInput{
+   margin-right: 30px;
+    width: 40%;
+} */
+.added{
+    background-color: #ffeae3;
+    color: #f0493e;
+    padding: 2px 5px;
+    /* display: flex; */
+    margin-bottom: 10px;
+    /* height: 33px; */
+    width: 100%;
+    height: 100%;
+}
+.added p{
+    margin:0;
+    display: inline-block;
+    width: 95%;
+    font-size: 14px;
+    overflow-x: clip;
+white-space: nowrap;
+text-overflow: ellipsis;
+}
+.added .cross{
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    margin-left: auto;
+    padding: 0px;
+}
+.addedStuff{
+    width: 90%;
+    overflow-y: auto;
+    margin-top: 10px;
+    max-height: 300px;
+}
+.saveRecipe{
+    width: 150px;
+    background-color: #dfebbd;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+@media screen and (max-width:900px) {
+    #createRecipe{
+        width: 95%;
+    }
+    .dishname{
+        width: 90%;
+    }
+    
+}
+
+@media screen and (max-width: 900px) {
+    .dishname{
+        flex-direction: column; 
+        gap: 20px
+    }
+    
+}

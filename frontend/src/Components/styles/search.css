@@ -1,0 +1,29 @@
+#search{
+    width: 400px;
+    display: flex;
+    margin: 0px 50px;
+}
+#search input{
+    width: 90%;
+    height: 30px;
+    outline: none;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-right: none;
+    padding-left: 10px;
+}
+#search span{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-left: none;
+    background-color: white;
+    padding: 0px 10px;
+    cursor: pointer;
+}
+.searchResult{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top:60px;
+}
