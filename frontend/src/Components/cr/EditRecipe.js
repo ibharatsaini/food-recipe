@@ -165,17 +165,7 @@ function EditRecipe({ recipe,changeState,submitFile,isLoading,
 
             <input style={{width:'85%',marginRight:"10px"}}  type={'text'} value={step} onChange={({target})=>{changeState({step:target.value})}} />
             <span onClick={addStep}>Add</span>
-            {/* <div className='addedStuff'>
-                {recipe.steps.map((el,i)=>(
-                    <div className='added'>
-                        <p>
-                            {el}
-                        </p>
-                        
-                        <span onClick={()=>{deleteStep(i)}} className='cross'>X</span>
-                    </div>
-                ))}
-            </div> */}
+
             {
                   recipe.steps.map((el,i)=>{
                     return (
@@ -190,12 +180,16 @@ function EditRecipe({ recipe,changeState,submitFile,isLoading,
                     )
                   })
             }
-            {/* <input className='ingInput' type={text} value={ingredients.quantity} /> */}
         </div>
         <div className='dishname'>
             <div className='row'>
                 <insert>Cooking Time</insert>
-                <input className='ingInput' onChange={({target})=>changeState({recipe:{...recipe,cookingTime:target.value}})} type={'text'} placeholder={""} value={recipe.cookingTime} />
+                <input 
+                     className='ingInput' 
+                     onChange={({target})=>changeState({recipe:{...recipe,cookingTime:target.value}})} 
+                     type={'text'} placeholder={""} 
+                     value={recipe.cookingTime} 
+                />
             </div>
             <div className='row'>
                 <insert>Serves</insert>
@@ -204,7 +198,8 @@ function EditRecipe({ recipe,changeState,submitFile,isLoading,
             
         </div>
         
-        <div className='saveRecipe' onClick={()=>{createRecipe(`/api/v1/recipe/update/${recipeId}`)}}>
+        <div className='saveRecipe' 
+             onClick={()=>{createRecipe(`/api/v1/recipe/update/${recipeId}`)}}>
                     Update Recipe
         </div>
     </div>

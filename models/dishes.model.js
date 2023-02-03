@@ -17,6 +17,10 @@ const Dish = new mongoose.Schema({
                                 message: '{VALUE} is not valid'
                             }
                         },
+                        createdBy:{
+                            type: mongoose.Schema.Types.ObjectId,
+                            ref:"users"
+                        },
                         recipe:{
                             type: mongoose.Types.ObjectId,
                             ref:"recipes"

@@ -3,10 +3,20 @@ import "../styles/createrecipe.css"
 import {MdImage,MdDelete} from 'react-icons/md'
 import Loader from '../Loader/Loader'
 import HigherComponent from '../higherComponent'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 function AddRecipe({ recipe,changeState,submitFile,isLoading,deleteFile,
                     addStep,imgLink,addIngredient,createRecipe,ingredients,
                     deleteIngredient,step,deleteStep }) {
+
+
+        const {isAuthenticated} = useSelector(state=>state.user)
+        const navigate = useNavigate()
+
+        if(!isAuthenticated) {
+            navigate(`/`)
+        }
    
   return (
     <div id="createRecipe">
@@ -45,7 +55,12 @@ function AddRecipe({ recipe,changeState,submitFile,isLoading,deleteFile,
         </div>
         <div className='dishname'>
             <label>Dish name</label>
-            <input type="text" onChange={({target})=>{changeState({recipe:{...recipe,fullName:target.value}})}} value={recipe.fullName} ></input>
+            <input type="text" 
+                   onChange={({target})=>{
+                    changeState({recipe:{...recipe,fullName:target.value}})}} 
+                    value={recipe.fullName} >
+
+             </input>
         </div>
         <div className='dishname'>
         <label>Cuisine</label>

@@ -4,14 +4,25 @@ const ErrorHandler = require("../utils/ErrorHandler")
 const catchAyncErrors = require("../utils/catchAsyncErrors")
 
 const createRecipe = async(req,res,next)=>{
-        console.log(req.body)
-        const {fullName, cuisine, image , ingredientsName,steps,ingredients,cookingTime,serves} = req.body
-        // console.log(ingredentsName)
-        const dish = await Dish.create({fullName,cuisine,image,ingredients:ingredientsName})
+        
+        const {  fullName, 
+                 cuisine, 
+                 image , 
+                 ingredientsName,
+                 steps,
+                 ingredients,
+                 cookingTime,
+                 serves
+        } = req.body
+        const createdBy = req.user._id
+
+        const dish = await Dish.create({fullName,cuisine,image,ingredients:ingredientsName,createdBy})
+
         console.log(ingredients)
+
         if(!dish) return next(new ErrorHandler(404, "Dish not created"))
 
-        const recipes = await Recipe.create({dish:dish._id,ingredients,steps, cookingTime,serves})
+        const recipes = await Recipe.create({dish:dish._id,ingredients,steps, cookingTime,serves,createdBy})
 
         if(!recipes) return next(new ErrorHandler(404, "Recipe not created"))
 
@@ -53,9 +64,14 @@ const allRecipe = async(req,res,next)=>{
 
 }
 const editRecipe=async(req,res,next)=>{
+
     const {id} = req.params
     const recipe = await Recipe.findById(id).populate(["dish"])
     if(!recipe) return next(new ErrorHandler(404,"Recipe not found"))
+
+    if(recipe.createdBy.toString() !== req.user._id.toString()){
+        return next(new ErrorHandler(404,"Not authorized to edit the recipe"))
+    }
     return res.status(200)
             .json({
                 success:true,
@@ -67,11 +83,17 @@ const editRecipe=async(req,res,next)=>{
 const updateRecipe = async(req,res,next)=>{
     const {id} = req.params
     const recipe = await Recipe.findById(id).populate(["dish"])
+
+
     if(!recipe) return next(new ErrorHandler(404,"Recipe not found"))
+
+    if(recipe.createdBy.toString() !== req.user._id.toString()){
+        return next(new ErrorHandler(404,"Not authorized to edit the recipe"))
+    }
     const {fullName, cuisine, image , ingredientsName,steps,ingredients,cookingTime,serves} = req.body
-        // console.log(ingredentsName)
+
     const dish = await Dish.findByIdAndUpdate(recipe.dish._id,{fullName,cuisine,image,ingredients:ingredientsName})
-    // const dish = await Dish.create({fullName,cuisine,image,ingredients:ingredientsName})
+
     console.log(ingredients)
     if(!dish) return next(new ErrorHandler(404, "Dish not created"))
 

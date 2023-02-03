@@ -10,14 +10,13 @@ import { ImSpoonKnife } from 'react-icons/im'
 
 function Recipe() {
 
-    // const [recipe,setRecipe] = useState(null)
     const {recipe,loading,error} = useSelector(state=>state.recipe)
     const dispatch = useDispatch()
     const {recipeId}  = useParams()
+
     useEffect(()=>{
-        dispatch(fetchRecipe(recipeId))
-      
-        // setRecipe(rec)
+        dispatch(fetchRecipe(recipeId)) 
+
     },[])
     
     if(!recipe) return null
@@ -33,7 +32,6 @@ function Recipe() {
                     <div className='about'>
                         <h3>{recipe.dish.fullName}</h3>
                         <section>
-                            {/* Recipe By: {recipe.createdBy.name} */}
                         </section>
                         <p>
                         Lorem ipsum is placeholder text commonly used in the graphic, 

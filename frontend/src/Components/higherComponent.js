@@ -2,6 +2,11 @@ import {ref,uploadBytesResumable,getDownloadURL,deleteObject } from 'firebase/st
 import { useState } from 'react';
 import {storage} from '../config/firebase.config';
 import React from 'react'
+import { toast } from 'react-hot-toast';
+
+
+//Higher order component to add and edit the recipe
+
 function higherComponent(WrappedComponent){
 
     class NewComponent extends React.Component{
@@ -60,10 +65,7 @@ function higherComponent(WrappedComponent){
                        }
                     })
 
-                    //   setRecipe(prev=>({
-                    //     ...prev,
-                    //     image:url
-                    //   }))
+                  
                    
               })
              
@@ -73,12 +75,9 @@ function higherComponent(WrappedComponent){
 
         deleteFile=()=>{
             this.setState(prev=>({...prev,isLoading:true}))
-            // console.log(imgLink)
-            // console.log('called')
-            
+
             deleteObject(ref(storage,this.state.imgLink)).then(()=>{
-            //   setIsLoading(false)
-            //   setImgLink(null)
+
                 this.setState(prev=>({...prev,
                     isLoading:false,
                     imgLink:null
@@ -127,14 +126,7 @@ function higherComponent(WrappedComponent){
                     ingredientsName:[...names]
                 }
             })
-            // this.setState(prev=>({
-            //     ...prev,
-            //     recipe:{
-            //         ...prev.recipe,
-            //         ingredients:[...ing],
-            //         ingredientsName:[...names]
-            //     }
-            // }))
+           
         }
         createRecipe=(url)=>{
             console.log(this.state.recipe)
@@ -146,7 +138,13 @@ function higherComponent(WrappedComponent){
                 body:JSON.stringify(this.state.recipe)
             })
                         .then(res=>res.json())
-                        .then(data=>console.log(data))
+                        .then(data=>{
+                            if(!data.success){
+                                toast.error(data.error)
+                            }else{
+                                window.history.pushState({},'',`/recipe/${data.data._id}`)
+                            }
+                        })
         }
         addIngredient=()=>{
             if(this.state.ingredients.name.length==0) return 
@@ -164,19 +162,7 @@ function higherComponent(WrappedComponent){
                 },
                 ingredients:{name:"",quantity:""}
             })
-        //     this.setState(prev=>({
-        //         ...prev,
-        //        recipe:{
-        //         ...prev.recipe,
-        //         ingredientsName:[...prev.ingredients,this.stateingredients.name],
-        //         ingredients:[...prev.ingredients,`${this.state.ingredients.name} ${this.state.ingredients.quantity}`]
-        //         }
-        // }))
-            // setIngredients({name:"",quantity:""})
-            // this.setState(prev=>({
-            //     ...prev,
-            //     ingredients:{name:"",quantity:""}
-            // }))
+
             console.log(this.state.recipe.ingredients)
         }
         changeState=(change)=>{

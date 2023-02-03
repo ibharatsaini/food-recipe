@@ -1,4 +1,5 @@
 const { searchDish, updateDish } = require("../controllers/dish.controller")
+const authenticateUser = require("../middlewares/authenticateUser")
 
 const router = require("express").Router()
 
@@ -10,6 +11,9 @@ router.route("/search")
             
 router.route("/update/:id")
                 .post(
+                    [
+                        authenticateUser
+                    ],
                     updateDish
                 )
 

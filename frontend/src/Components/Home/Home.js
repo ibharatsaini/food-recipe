@@ -2,6 +2,8 @@ import React from 'react'
 import Banner from '../Banner/Banner'
 import Dish from '../Dish/Dish'
 import '../styles/home.css'
+
+
 function Home() {
   return (
     <>

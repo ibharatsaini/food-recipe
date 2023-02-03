@@ -12,7 +12,6 @@ function Header() {
   const dispatch = useDispatch()
   const location = useLocation()
   const navigate = useNavigate()
-  // const userData = useSelector(state=>state.user)
   const [visible,setVisible] =  useState(false)
   if(location.pathname == ('/join-us') || location.pathname == '/login' ){
     return null
@@ -20,21 +19,15 @@ function Header() {
   
 
   function checkProfile(){
-    console.log('checl')
     setVisible(prev=>!prev)
     console.log(visible)
   }
   function logout(){
     localStorage.clear()
     dispatch(logoutUser())
-    // const matched = ['/show/' , '/checkout' ,'/my-account'].some(el=>location.pathname.includes(el))
     toast.success("Logged Out!")
     navigate("/")
-    // if(matched){
-    //    navigate("/")
-    // }
 
-      // return (<Navigate replace to="/" />)
   }
   return (
     <header>
@@ -45,12 +38,22 @@ function Header() {
         <div className="dropDown joinus">
                    {/* { userData.isAuthenticated ? <div onClick={checkProfile} className="profile"> <img src={process.env.PUBLIC_URL+"/avatar.png"} />{visible &&( <div id="abs"> <Link to={"/my-account"} >My Account</Link><span onClick={logout}>Log Out</span></div>)} </div> : <Link className="jbut" to="/join-us">Join Us</Link>} */}
             { userData.isAuthenticated ?
-                <div onClick={checkProfile} className="profile"> 
-                <img src={Avatar} />{visible &&( <div id="abs">
-                   <Link to={"/my-account"} >My Account</Link>
-                   <span onClick={logout}>Log Out</span></div>)}
-                    </div> : 
-                    <Link className="jbut" to="/join-us">Join Us</Link>
+                <div onClick={checkProfile} 
+                      className="profile"> 
+                <img src={Avatar} />
+                 {visible && 
+                      ( <div id="abs">
+                            <Link to={"/my-account"} >
+                                My Account
+                            </Link>
+                            <span onClick={logout}>
+                              Log Out
+                            </span>
+                        </div>
+                        )
+                      }
+                  </div> : 
+                  <Link className="jbut" to="/join-us">Join Us</Link>
               }
         </div>
     </header>

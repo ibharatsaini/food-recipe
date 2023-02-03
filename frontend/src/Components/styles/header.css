@@ -5,12 +5,13 @@ header{
     align-items: center;
     position: sticky;
     top:0px;
-  background-color: #f9f7f3;
+    justify-content: space-between;
+    background-color: #f9f7f3;
   /* background-color: ; */
     /* justify-content: space-around; */
 }
 #logo{
-    margin: 0px 60px;
+    /* margin: 0px 60px; */
     font-size: 20px;
 }
 .menu{
@@ -77,11 +78,9 @@ header{
 #abs{
   position: absolute;
   width: 120px;
-  /* height: 100px; */
   top: 50px;
   background-color: #f5f6ea;
   display: flex;
-  /* visibility: hidden; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
