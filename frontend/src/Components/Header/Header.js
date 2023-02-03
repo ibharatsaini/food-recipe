@@ -32,7 +32,7 @@ function Header() {
   return (
     <header>
         <div id='logo'>
-            Reci-eppy
+            Recippy
         </div>
         <Search />
         <div className="dropDown joinus">
