@@ -5,6 +5,7 @@ import Loader from '../Loader/Loader'
 import HigherComponent from '../higherComponent'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
 function AddRecipe({ recipe,changeState,submitFile,isLoading,deleteFile,
                     addStep,imgLink,addIngredient,createRecipe,ingredients,
@@ -17,6 +18,24 @@ function AddRecipe({ recipe,changeState,submitFile,isLoading,deleteFile,
         if(!isAuthenticated) {
             navigate(`/`)
         }
+
+        function callcreateRecipe(){
+            const recipe = createRecipe(`/api/v1/recipe/create`)
+            recipe.then(res=>res.json())
+                        .then(data=>{
+                            if(!data.success){
+                                toast.error(data.error)
+                            }else{
+                                console.log('redrect')
+                                navigate(`/recipe/${data.data._id}`)
+                            }
+                        })
+                        .catch(e=>{
+                            console.log(e)
+                        })
+        }
+
+
    
   return (
     <div id="createRecipe">
@@ -128,7 +147,7 @@ function AddRecipe({ recipe,changeState,submitFile,isLoading,deleteFile,
             
         </div>
         
-        <div className='saveRecipe' onClick={()=>{createRecipe(`/api/v1/recipe/create`)}}>
+        <div className='saveRecipe' onClick={()=>{callcreateRecipe()}}>
                     Save Recipe
         </div>
     </div>

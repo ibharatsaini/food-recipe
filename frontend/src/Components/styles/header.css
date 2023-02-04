@@ -119,9 +119,12 @@ header{
   }
 }
 
-@media screen and (min-width: 350px) and (max-width:600px){
+@media screen and (min-width: 350px) and (max-width:650px){
   header{
-      height: 80px;
+      height: 0px;
+  }
+  #logo{
+    font-size: 16px;
   }
   .menu{
       min-width: 200px;

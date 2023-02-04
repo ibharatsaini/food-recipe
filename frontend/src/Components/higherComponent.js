@@ -16,7 +16,7 @@ function higherComponent(WrappedComponent){
             this.state = {
                 recipe:{
                     fullName:"",
-                    cuisine:"",
+                    cuisine:"indian",
                     steps:[],
                     image:null,
                     ingredientsName:[],
@@ -130,25 +130,14 @@ function higherComponent(WrappedComponent){
         }
         createRecipe=(url)=>{
             console.log(this.state.recipe)
-            fetch(url,{
+            return fetch(url,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",
                 },
                 body:JSON.stringify(this.state.recipe)
             })
-                        .then(res=>res.json())
-                        .then(data=>{
-                            if(!data.success){
-                                toast.error(data.error)
-                            }else{
-                                console.log('redrect')
-                                history.push(`/recipe/${data.data._id}`)
-                            }
-                        })
-                        .catch(e=>{
-                            console.log(e)
-                        })
+                        
         }
         addIngredient=()=>{
             if(this.state.ingredients.name.length==0) return 

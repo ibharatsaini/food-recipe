@@ -13,7 +13,14 @@ router.route("/create")
                 createRecipe
             )
 
-            
+router.route("/my-recipes")
+            .get(
+                [
+                    authenticateUser
+                ],
+                userRecipes
+            )
+   
 router.route("/all")
             .get(
                 allRecipe
@@ -41,13 +48,6 @@ router.route("/update/:id")
                     updateRecipe
                 )
 
-router.route("/my-recipes")
-                    .get(
-                        [
-                            authenticateUser
-                        ],
-                        userRecipes
-                    )
 
 
 

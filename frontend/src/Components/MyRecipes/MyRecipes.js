@@ -8,7 +8,7 @@ function MyRecipes() {
     const navigate = useNavigate()
 
     useEffect(()=>{
-        fetch(`/api/v1/recipe/my-recipe`)
+        fetch(`/api/v1/recipe/my-recipes`)
                 .then(res=>res.json())
                 .then(data=>{
                     if(!data.success){

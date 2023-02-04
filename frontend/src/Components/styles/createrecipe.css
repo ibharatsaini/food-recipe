@@ -1,5 +1,6 @@
 #createRecipe{
     width: 80%;
+    max-width: 850px;
     padding: 100px 0px;
     margin: auto;
 }

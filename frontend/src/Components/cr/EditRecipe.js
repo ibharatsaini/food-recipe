@@ -5,10 +5,12 @@ import Loader from '../Loader/Loader'
 import HigherComponent from '../higherComponent'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
+import { toast } from 'react-hot-toast'
 function EditRecipe({ recipe,changeState,submitFile,isLoading,
                     addStep,imgLink,addIngredient,createRecipe,ingredients,
                     deleteIngredient,step,deleteStep }) {
+
+
 
     function deleteFile(){
         changeState({recipe:{
@@ -16,12 +18,30 @@ function EditRecipe({ recipe,changeState,submitFile,isLoading,
             image:null
         }})
     }
+
+    const {recipeId} = useParams()
+
     const navigate = useNavigate()
     const {user,isAuthenticated} = useSelector(state=>state.user)
     if(!isAuthenticated) {
          navigate(`/`)
     }
-    const {recipeId} = useParams()
+
+    function callcreateRecipe(){
+        const recipe = createRecipe(`/api/v1/recipe/update/${recipeId}`)
+        recipe.then(res=>res.json())
+                    .then(data=>{
+                        if(!data.success){
+                            toast.error(data.error)
+                        }else{
+                            console.log('redrect')
+                            navigate(`/recipe/${data.data._id}`)
+                        }
+                    })
+                    .catch(e=>{
+                        console.log(e)
+                    })
+    }
     useEffect(()=>{
         fetch(`/api/v1/recipe/edit/${recipeId}`)
             .then(res=>res.json())
@@ -199,7 +219,7 @@ function EditRecipe({ recipe,changeState,submitFile,isLoading,
         </div>
         
         <div className='saveRecipe' 
-             onClick={()=>{createRecipe(`/api/v1/recipe/update/${recipeId}`)}}>
+             onClick={()=>{callcreateRecipe()}}>
                     Update Recipe
         </div>
     </div>
