@@ -39,7 +39,13 @@ function Header() {
                    {/* { userData.isAuthenticated ? <div onClick={checkProfile} className="profile"> <img src={process.env.PUBLIC_URL+"/avatar.png"} />{visible &&( <div id="abs"> <Link to={"/my-account"} >My Account</Link><span onClick={logout}>Log Out</span></div>)} </div> : <Link className="jbut" to="/join-us">Join Us</Link>} */}
             { userData.isAuthenticated ?
                 <div className='divrecipe'>
-                    <Link className='add-recipe' to={`/create`}>Add Recipe</Link>
+                   {
+                          window.innerHeight > 650 && (
+                            <Link className='add-recipe' to={"/create"} >
+                                  Add Recipes
+                            </Link>
+                          )
+                    }
               
                     <div onClick={checkProfile} 
                           className="profile"> 
@@ -49,6 +55,13 @@ function Header() {
                                 <Link to={"/my-recipes"} >
                                     My Recipes
                                 </Link>
+                                {
+                                  window.innerHeight <= 650 && (
+                                    <Link to={"/create"} >
+                                          Add Recipes
+                                    </Link>
+                                  )
+                                }
                                 <span onClick={logout}>
                                   Log Out
                                 </span>

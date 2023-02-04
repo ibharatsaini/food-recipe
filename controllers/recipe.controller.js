@@ -110,11 +110,11 @@ const updateRecipe = async(req,res,next)=>{
 
 const userRecipes = async(req,res,next)=>{
     const id= req.user._id
-    
+    console.log(id)
     const recipes  =  await Recipe.find({createdBy:id}).populate(['dish'])
-
+    console.log(recipes)
     if(recipes.length==0) return next(new ErrorHandler(404,"No recipes found"))
-
+    console.log(recipes.length)
     return res.status(200)
                 .json({
                     success:true,

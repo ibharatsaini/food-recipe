@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import { toast } from 'react-hot-toast'
 import Loader from '../Loader/Loader'
 import Dish from '../Dish/Dish'
+import '../styles/myrecipe.css'
 import { useNavigate } from 'react-router-dom'
 function MyRecipes() {
     const [recipe,setRecipe] = useState(null)
@@ -17,7 +18,7 @@ function MyRecipes() {
 
                     }
 
-                    setRecipe(prev=>({...data.data}))
+                    setRecipe(prev=>[...data.data])
                 })
                 
     },[])
@@ -25,19 +26,22 @@ function MyRecipes() {
     return (
         <div id='my-recipe'>
             <h2>My Recipes</h2>
-            {
-                !recipe ? <Loader />
-                : (
-                    recipe.map(el=>{
-                        return <Dish fullName={el.fullName}
-                                    link={el._id}
-                                    image={el.image}
-                                    cuisine={el.cuisine}
-                                    edit={true} 
-                                />
-                    })
-                )
-            }
+            <div className='recS'>
+                    {
+                        !recipe ? <Loader />
+                        : (
+                            recipe.map(el=>{
+                                const {dish} = el
+                                return (<Dish fullName={dish.fullName}
+                                            link={el._id}
+                                            image={dish.image}
+                                            cuisine={dish.cuisine}
+                                            edit={true} 
+                                        />)
+                            })
+                        )
+                    }
+            </div>
         </div>
     )
 }

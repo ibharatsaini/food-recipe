@@ -9,7 +9,9 @@ function Dish({image,fullName,cuisine,link,edit=false}) {
         </div>
         <h3>{fullName}</h3>
         <span>{cuisine}</span>
-        {edit && <Link to={`/edit/${link}`} /> }
+        {edit && (<Link to={`/edit/${link}`}>
+                    Edit Recipe
+                  </Link>) }
     </Link>
   )
 }

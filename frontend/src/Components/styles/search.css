@@ -27,4 +27,11 @@
     display: flex;
     flex-direction: column;
     top:60px;
+    min-width: 250px;
+    width: 40%;
+}
+
+.searchResult a{
+    background-color: white;
+    z-index: 2;
 }

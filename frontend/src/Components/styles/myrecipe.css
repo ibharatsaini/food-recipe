@@ -1,0 +1,17 @@
+#my-recipe{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    gap: 50px;
+    margin: 100px auto;
+}
+
+.recS{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 50px;
+}
