@@ -1,6 +1,8 @@
 #recipe{
     width: 100%;
-    padding: 100px;
+    /* padding: 100px; */
+    max-width: 100px;
+    margin: auto;
 }
 #recipe-about{
     display: flex;
