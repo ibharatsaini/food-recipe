@@ -106,10 +106,29 @@ const updateRecipe = async(req,res,next)=>{
                     data:recipes
                 })
 }
+
+
+const userRecipes = async(req,res,next)=>{
+    const id= req.user._id
+    
+    const recipes  =  await Recipe.find({createdBy:id}).populate(['dish'])
+
+    if(recipes.length==0) return next(new ErrorHandler(404,"No recipes found"))
+
+    return res.status(200)
+                .json({
+                    success:true,
+                    data:recipes
+                })
+
+}
+
+
 module.exports = {
     createRecipe: catchAyncErrors(createRecipe),
     getRecipe:   catchAyncErrors(getRecipe),
     editRecipe: catchAyncErrors(editRecipe),
     updateRecipe: catchAyncErrors(updateRecipe),
-    allRecipe: catchAyncErrors(allRecipe)
+    allRecipe: catchAyncErrors(allRecipe),
+    userRecipes: catchAyncErrors(userRecipes)
 }

@@ -142,8 +142,12 @@ function higherComponent(WrappedComponent){
                             if(!data.success){
                                 toast.error(data.error)
                             }else{
-                                window.history.pushState({},'',`/recipe/${data.data._id}`)
+                                console.log('redrect')
+                                window.history.push(`/recipe/${data.data._id}`)
                             }
+                        })
+                        .catch(e=>{
+                            console.log(e)
                         })
         }
         addIngredient=()=>{

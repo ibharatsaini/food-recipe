@@ -11,9 +11,7 @@
 .imgDish{
     width: 100%;
     height: 200px;
-    /* display: flex;
-    justify-content: center; */
-    /* align-items: center; */
+    
 }
 .dish h3{
     margin: 10px 0px 30px 10px;
@@ -35,4 +33,11 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.dish a{
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px;
+    background-color:#1f8787;
 }

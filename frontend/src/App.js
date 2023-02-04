@@ -10,6 +10,7 @@ import Header from './Components/Header/Header';
 import { Toaster } from 'react-hot-toast';
 import JoinUs from './Components/JoinUs/JoinUs';
 import Login from './Components/JoinUs/Login';
+import MyRecipes from './Components/MyRecipes/MyRecipes';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path={"/recipe/:recipeId"} element={<Recipe />} />
               <Route path={"/create"} element={<AddRecipe />} />
               <Route path={"/edit/:recipeId"} element={<EditRecipe />} />
+              <Route path={"/my-recipes"} element={<MyRecipes />}/>
               <Route path={`/join-us`} element={<JoinUs />} />
               <Route path={`/login`} element={<Login />} />
         </Routes> 

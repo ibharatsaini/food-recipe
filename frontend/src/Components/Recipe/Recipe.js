@@ -5,7 +5,7 @@ import "../styles/recipe.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { fetchRecipe } from '../../reduxStore/actions/recipe.actions'
-import { AiOutlineClockCircle} from 'react-icons/ai'
+import { AiOutlineClockCircle } from 'react-icons/ai'
 import { ImSpoonKnife } from 'react-icons/im'
 
 function Recipe() {
@@ -16,7 +16,6 @@ function Recipe() {
 
     useEffect(()=>{
         dispatch(fetchRecipe(recipeId)) 
-
     },[])
     
     if(!recipe) return null

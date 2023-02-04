@@ -1,4 +1,4 @@
-const { createRecipe, getRecipe, editRecipe, updateRecipe, allRecipe } = require("../controllers/recipe.controller")
+const { createRecipe, getRecipe, editRecipe, updateRecipe, allRecipe, userRecipes } = require("../controllers/recipe.controller")
 const { createUser, loginUser } = require("../controllers/user.controller")
 const authenticateUser = require("../middlewares/authenticateUser")
 
@@ -41,6 +41,13 @@ router.route("/update/:id")
                     updateRecipe
                 )
 
+router.route("/my-recipes")
+                    .get(
+                        [
+                            authenticateUser
+                        ],
+                        userRecipes
+                    )
 
 
 

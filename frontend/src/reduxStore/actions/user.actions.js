@@ -1,9 +1,7 @@
 // const CREATE_USER = 'CREATE_USER'
 
 import toast from "react-hot-toast"
-// import { backendUrl } from "../contants"
 
-// const LOGIN_USER = 'LOGIN_USER'
 const LOADING_USER = 'LOADING_USER'
 const ERROR_USER ='ERROR_USER'
 const UPDATE_USER = 'UPDATE_USER'
@@ -53,9 +51,7 @@ export const createUser = (data)=>async(dispatch)=>{
                 "Content-Type":"application/json"
             }
         })).json()
-        console.log(user)
         if(!user.success) return dispatch(errorUser(true))
-        console.log(user)
         localStorage.setItem('user',JSON.stringify(user.data))
         toast.success("Signed Up!")
         return dispatch(updateUser(user.data))

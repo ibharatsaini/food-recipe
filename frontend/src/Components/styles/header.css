@@ -7,9 +7,8 @@ header{
     top:0px;
     justify-content: space-between;
     background-color: #f9f7f3;
-    padding: 20px 0px;
-  /* background-color: ; */
-    /* justify-content: space-around; */
+    padding: 0px 30px;
+ 
 }
 #logo{
     /* margin: 0px 60px; */
@@ -38,13 +37,22 @@ header{
   text-decoration: none;
 }
 .dropDown{
-  /* width: 100px; */
   display: flex;
   flex-direction: column;
   position: relative;
-  /* height: 30px; */
   cursor: pointer;
 
+}
+
+.divrecipe{
+  display: flex;
+  gap: 20px
+}
+
+.add-recipe{
+  text-decoration: none;
+  color: black;
+  font-size: 17px;
 }
 
 .dropDown:hover .down{
@@ -68,7 +76,7 @@ header{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
+  width: 40px;
   height: 100%;
   position: relative;
 }
@@ -96,7 +104,7 @@ header{
 }
 #abs span{
   margin: 10px;
-  color: whitesmoke;
+  color: black;
   font-size: 14px;
   text-transform: none;
 }
