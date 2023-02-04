@@ -2,7 +2,7 @@
     width: 100%;
     /* padding: 100px; */
     max-width: 1000px;
-    margin: auto;
+    margin: 100px auto;
 }
 #recipe-about{
     display: flex;
