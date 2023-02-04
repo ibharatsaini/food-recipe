@@ -143,7 +143,7 @@ function higherComponent(WrappedComponent){
                                 toast.error(data.error)
                             }else{
                                 console.log('redrect')
-                                window.history.push(`/recipe/${data.data._id}`)
+                                history.push(`/recipe/${data.data._id}`)
                             }
                         })
                         .catch(e=>{
